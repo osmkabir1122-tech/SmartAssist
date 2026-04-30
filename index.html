@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartAssist - Business Assistant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: #007BFF;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #007BFF;
+            color: white;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>SmartAssist 🤖</h1>
+    <p>Your AI-powered business assistant</p>
+    <button class="btn" onclick="openChat()">Start Chat</button>
+</div>
+
+<footer>
+    © 2026 SmartAssist | AI Business Assistant
+</footer>
+
+<!-- Watson Assistant Script -->
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "5137fb77-947a-42ce-971d-60a5a1e0be47",
+    region: "eu-de",
+    serviceInstanceID: "0f901e3f-23ff-415e-a1b2-ca2f071ab685",
+    onLoad: async (instance) => { 
+        window.watsonInstance = instance;
+        await instance.render(); 
+    }
+  };
+
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" 
+        + (window.watsonAssistantChatOptions.clientVersion || 'latest') 
+        + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+
+  function openChat() {
+      if (window.watsonInstance) {
+          window.watsonInstance.openWindow();
+      }
+  }
+</script>
+
+</body>
+</html>
